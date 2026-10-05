@@ -10,6 +10,24 @@ Instead of giving every learner the same fixed exercises, the system analyzes le
 
 The application uses a local language model through Ollama for language analysis and combines it with structured grammar exercises, learner performance tracking, and adaptive difficulty.
 
+## Screenshots
+
+### Home
+
+![Home screen](screenshots/homepage.png)
+
+### Writing Analysis
+
+![Writing analysis](screenshots/writing-analysis.png)
+
+### Adaptive Grammar Practice
+
+![Practice feedback](screenshots/practice-feedback.png)
+
+### Learner Progress
+
+![Progress dashboard](screenshots/progress-dashboard.png)
+
 ## Features
 
 * English writing analysis
@@ -83,7 +101,12 @@ Adaptive-English-Learning-Assistant-System/
 ├── practice_engine.py
 ├── requirements.txt
 ├── README.md
-└── .gitignore
+├── .gitignore
+└── screenshots/
+    ├── homepage.png
+    ├── writing-analysis.png
+    ├── practice-feedback.png
+    └── progress-dashboard.png
 ```
 
 ## Installation
@@ -98,7 +121,7 @@ cd Adaptive-English-Learning-Assistant-System
 Create a virtual environment:
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 ```
 
 Activate the virtual environment.
