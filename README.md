@@ -1,14 +1,14 @@
 # Adaptive English Learning Assistant
 
-An NLP based adaptive English learning system that analyzes learner writing, identifies grammar errors, estimates CEFR proficiency, and generates personalized grammar practice based on the learner's weaknesses.
+An NLP based adaptive English learning system that analyzes learner writing, identifies grammar errors, estimates CEFR proficiency, and generates personalized grammar practice based on learner weaknesses.
 
 ## Overview
 
-The Adaptive English Learning Assistant is designed to provide more personalized English grammar practice than a traditional fixed exercise system.
+The Adaptive English Learning Assistant is an experimental educational NLP application designed to connect automatic writing analysis with personalized grammar practice.
 
-Instead of giving every learner the same exercises, the application analyzes writing samples, identifies recurring grammar problems, records learner performance, and recommends practice based on areas that need improvement.
+Instead of giving every learner the same fixed exercises, the system analyzes learner writing, identifies recurring grammar problems, records practice performance, and uses that information to recommend practice in weaker areas.
 
-The system uses a local language model through Ollama for language analysis and combines it with structured grammar exercises and learner performance tracking.
+The application uses a local language model through Ollama for language analysis and combines it with structured grammar exercises, learner performance tracking, and adaptive difficulty.
 
 ## Features
 
@@ -18,31 +18,31 @@ The system uses a local language model through Ollama for language analysis and 
 * Personalized grammar practice
 * Adaptive exercise difficulty
 * Tracking of learner strengths and weaknesses
-* Practice history and accuracy tracking
-* Detection of repeated or similar practice questions
+* Practice accuracy tracking
+* Practice history
+* Duplicate and near duplicate question detection
 * Anonymous learner profiles
 * Local learner data storage
-* FastAPI based backend
+* FastAPI backend
 * Local LLM integration through Ollama
 
 ## How It Works
 
-The application follows a basic adaptive learning cycle:
+The application follows an adaptive learning cycle:
 
 1. The learner submits an English writing sample.
-2. The system analyzes the text for grammar problems.
-3. Grammar errors are categorized by area, such as articles, verb tense, prepositions, word order, or subject verb agreement.
-4. The learner's performance profile is updated.
+2. The system analyzes the writing for grammar problems.
+3. Errors are classified into supported grammar categories.
+4. The learner profile is updated.
 5. The system identifies weaker grammar areas.
-6. Practice exercises are selected or generated for those areas.
-7. The learner's answers are recorded.
-8. Future exercise difficulty and recommendations are adjusted according to performance.
+6. Practice exercises are selected for those areas.
+7. The learner submits answers to the exercises.
+8. Accuracy and recent performance are recorded.
+9. Future recommendations and exercise difficulty are adjusted according to learner performance.
 
-This allows practice to become increasingly personalized as the learner uses the system.
+## Supported Grammar Areas
 
-## Grammar Areas
-
-The system currently supports grammar categories including:
+The system currently supports the following grammar categories:
 
 * Past tense
 * Present tense
@@ -71,42 +71,28 @@ The system currently supports grammar categories including:
 * FastAPI
 * Pydantic
 * Ollama
-* Large Language Models
-* JSON based local learner storage
+* Local large language model processing
+* JSON based learner storage
 
 ## Project Structure
 
 ```text
-adaptive-english-learning-assistant/
-│
+Adaptive-English-Learning-Assistant-System/
 ├── main.py
 ├── learner_profile.py
 ├── practice_engine.py
 ├── requirements.txt
 ├── README.md
-├── .gitignore
-└── .env.example
+└── .gitignore
 ```
-
-### `main.py`
-
-Contains the FastAPI application, API endpoints, learner sessions, writing analysis logic, and Ollama integration.
-
-### `learner_profile.py`
-
-Manages learner profiles, grammar error history, CEFR history, practice performance, weakness scores, and personalized recommendations.
-
-### `practice_engine.py`
-
-Contains structured grammar exercises, exercise selection logic, difficulty levels, and duplicate question detection.
 
 ## Installation
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
-cd YOUR-REPOSITORY
+git clone https://github.com/Kelly-Hsu-test/Adaptive-English-Learning-Assistant-System.git
+cd Adaptive-English-Learning-Assistant-System
 ```
 
 Create a virtual environment:
@@ -115,7 +101,7 @@ Create a virtual environment:
 python -m venv .venv
 ```
 
-Activate it.
+Activate the virtual environment.
 
 On macOS or Linux:
 
@@ -129,7 +115,7 @@ On Windows:
 .venv\Scripts\activate
 ```
 
-Install the dependencies:
+Install the required packages:
 
 ```bash
 pip install -r requirements.txt
@@ -139,7 +125,7 @@ pip install -r requirements.txt
 
 This project uses Ollama to run the language model locally.
 
-Install Ollama and download the model used by the application:
+Install Ollama, then download the default model:
 
 ```bash
 ollama pull llama3.2:3b
@@ -151,26 +137,17 @@ The default model is:
 llama3.2:3b
 ```
 
-A different Ollama model can be selected using the `OLLAMA_MODEL` environment variable.
-
-Example:
-
-```env
-OLLAMA_MODEL=llama3.2:3b
-COOKIE_SECURE=0
-```
+A different model can be selected using the `OLLAMA_MODEL` environment variable.
 
 ## Running the Application
 
-Start Ollama if it is not already running.
-
-Then run the FastAPI application:
+Start the application with:
 
 ```bash
 uvicorn main:app --reload
 ```
 
-The application will normally be available at:
+The application should then be available locally at:
 
 ```text
 http://127.0.0.1:8000
@@ -190,20 +167,23 @@ These files contain locally generated learner information and are excluded from 
 
 The application uses anonymous learner identifiers rather than requiring users to create accounts.
 
-Learner records are stored locally and are not intended to be committed to the public GitHub repository.
+Learner records are stored locally and should not be committed to the public repository.
 
 ## Current Status
 
-This project is an experimental educational NLP application and is under active development.
+This project is an experimental prototype and is under active development.
 
-Future improvements may include better learner modeling, expanded grammar coverage, improved exercise generation, more detailed progress visualization, and further evaluation of the accuracy of language model based grammar analysis.
+Possible future improvements include:
 
-## Purpose
+* More extensive evaluation of grammar analysis accuracy
+* Improved learner modeling
+* Expanded grammar exercise coverage
+* More detailed progress visualization
+* Improved adaptive exercise selection
+* Broader testing across different English proficiency levels
 
-This project explores how Natural Language Processing and adaptive learning techniques can be combined to provide more individualized English language learning support.
+## Project Goal
 
-In particular, it focuses on connecting automatic analysis of learner writing with personalized grammar practice rather than treating grammar correction and practice as separate tasks.
+The goal of this project is to explore how Natural Language Processing and adaptive learning techniques can be combined to provide more individualized English language learning support.
 
-## Author
-
-Chih-Han Hsu
+The project focuses particularly on connecting automatic analysis of learner writing with personalized grammar practice, so that identified weaknesses can directly influence future exercises.
